@@ -7,6 +7,7 @@ import Question from "./Question";
 import NextButton from "./NextButton";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
+import RestartButton from "./RestartButton";
 
 import { useEffect, useReducer } from "react";
 
@@ -56,6 +57,13 @@ function reducer(state, action) {
         status: "finished",
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
+      };
+    case "restart":
+      return {
+        ...initialState,
+        status: "ready",
+        questions: state.questions,
+        highscore: state.highscore,
       };
 
     case "nextQuestion":
@@ -115,11 +123,14 @@ export default function App() {
           </>
         )}
         {status === "finished" && (
-          <FinishScreen
-            points={points}
-            maxPossiblePoints={maxPossiblePoints}
-            highscore={highscore}
-          />
+          <>
+            <FinishScreen
+              points={points}
+              maxPossiblePoints={maxPossiblePoints}
+              highscore={highscore}
+            />
+            <RestartButton dispatch={dispatch} />
+          </>
         )}
       </Main>
     </div>
