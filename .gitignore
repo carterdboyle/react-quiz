@@ -10,6 +10,7 @@
 
 # production
 /build
+src-no-context
 
 # misc
 .DS_Store

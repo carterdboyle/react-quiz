@@ -11,11 +11,10 @@ import RestartButton from "./RestartButton";
 import Footer from "./Footer";
 import Timer from "./Timer";
 
-import { useEffect } from "react";
 import { useQuiz } from "../contexts/QuizContext";
 
 export default function App() {
-  const { dispatch, status } = useQuiz();
+  const { status } = useQuiz();
 
   return (
     <div className="app">
